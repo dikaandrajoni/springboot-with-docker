@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Provinsi</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  media="screen"/>
+    <style>
+    table th {
+        background: #00BFFF;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    table td, th {
+        padding: 6px 6px 6px 10px;
+        border: 1px solid #ccc;
+    }
+        /* Penomoran otomatis pada baris */
+    .no-baris {
+        counter-reset: serial-number;  /* Atur penomoran ke 0 */
+    }
+    .no-baris td:first-child:before {
+        counter-increment: serial-number;  /* Kenaikan penomoran */
+        content: counter(serial-number);  /* Tampilan counter */
+    }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="#" style="color: #fff;">
+        CRUD Data Provinsi
+    </a>
+</nav>
+
+<div class="container mb-5">
+
+    <div align="center">
+        <h2 align="center" style="margin: 60px 10px 10px 10px;">CRUD Data Provinsi, Kabupaten/Kota,
+            Kecamatan, dan Desa
+        </h2><hr>
+        <br/>
+        <a href="/provinsi" class="btn btn-primary"> List Provinsi</a>
+        <a href="/kabupaten" class="btn btn-primary"> List Kabupaten</a>
+        <a href="/kecamatan" class="btn btn-primary"> List Kecamatan</a>
+        <a href="/desa" class="btn btn-primary"> List Desa</a>
+
+    </div>
+</div>
+
+<div class="container mb-5">
+
+    <div align="center">
+        <h2 align="center" style="margin: 60px 10px 10px 10px;">Data Daerah</h2><hr>
+
+        <br/><br/>
+        <table border="1" cellpadding="10" class="no-baris">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Provinsi</th>
+                <th>Kabupaten/Kota</th>
+                <th>Kecamatan</th>
+                <th>Desa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="provinsi : ${listProvinsi}">
+                <td ></td>
+                <td th:text="${provinsi.nama}">Provinsi</td>
+                <td th:text="${provinsi.kabupaten}">Kabupaten</td>
+                <td th:text="${provinsi.kecamatan}">Kecamatan</td>
+                <td th:text="${provinsi.desa}">Desa</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr/>
+</div>
+
+<div class="navbar bg-dark fixed-bottom">
+    <div style="color: #fff;">© <?php echo date('Y'); ?> Copyright:
+        <a href="#"> CRUD Provinsi</a>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Provinsi</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  media="screen"/>
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="/" style="color: #fff;">
+    CRUD Data Provinsi
+  </a>
+</nav>
+
+<div class="collapse navbar-collapse">
+  <ul class="nav navbar-nav">
+    <li>
+      <a class="navbar-brand" style="color: #fff;"
+         th:href="@{/provinsi}">Daftar Provinsi</a>
+    </li>
+    <li>
+      <a class="navbar-brand" style="color: #fff;"
+         th:href="@{/kabupaten}">Daftar Kabupaten</a>
+    </li>
+  </ul>
+</div>
+<div class="container" align="center">
+  <h2 align="center" style="margin: 60px 10px 10px 10px;">Tambah Kabupaten</h2><hr>
+
+  <form border="1" action="#" th:action="@{/kabupaten/simpan}" th:object="${kabupatenKota}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="0" cellpadding="10">
+
+      <tr>
+        <td>Nama Kabupaten :</td>
+        <td><input type="text" th:field="*{nama}" /></td>
+      </tr>
+      <tr>
+        <td>Provinsi :</td>
+        <td>
+          <select id="provinsi" th:field="*{provinsi}">
+            <option th:each="provinsi:${provinsi}" th:text="${provinsi.nama}"
+                    th:value="${provinsi.id}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td/>
+        <td colspan="2"><button class="btn btn-success" type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div class="navbar bg-dark fixed-bottom">
+  <div style="color: #fff;">© <?php echo date('Y'); ?> Copyright:
+    <a href="#"> CRUD Provinsi</a>
+  </div>
+</div>
+<script th:src="@{/js/jquery.min.js}"></script>
+</body>
+</html>
